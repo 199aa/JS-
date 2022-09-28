@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .OP {
+        width: 200px;
+        height: 25px;
+        border: 1px solid #ccc;
+        position: absolute;
+        margin: 100px 50px;
+        font-size: 25px;
+        display: none;
+    }
+    
+    input {
+        margin-top: 100px;
+    }
+</style>
+
+<body>
+    <div class="OP"></div>
+
+    订单编号:<input type="text" name="" id="">
+    <button id="btn">发布</button>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+</body>
+<script>
+    var input = document.querySelector('input');
+
+    var btn = document.querySelector('#btn');
+    var text = document.querySelector('textarea');
+    var div = document.querySelector('div');
+    btn.addEventListener('click', function() {
+        text.innerHTML = input.value;
+    })
+    document.addEventListener('keyup', function(e) {
+        if (e.keyCode == 13) {
+            text.innerHTML = input.value;
+
+        }
+    })
+    input.addEventListener('keyup', function() {
+        if (this.value != '') {
+            div.innerHTML = this.value;
+            div.style.display = 'block'
+        } else {
+            div.style.display = 'none'
+
+        }
+    })
+    input.addEventListener('blur', function() {
+
+        div.style.display = 'none'
+    })
+    input.addEventListener('focus', function() {
+        div.innerHTML = this.value;
+        div.style.display = 'block'
+    })
+</script>
+
+</html>

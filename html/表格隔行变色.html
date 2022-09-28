@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<style type="text/css">
+		tr td a {
+			color: #DC143C;
+		}
+
+		tr td:hover a {
+			color: blue;
+		}
+
+		table {
+			margin: 0 auto;
+
+		}
+
+		.bg {
+			background-color: red;
+		}
+
+		.wi {
+			background-color: white;
+		}
+
+		table thead tr {
+			background-color: #009DFD;
+		}
+	</style>
+
+	<body>
+		<table border="1" cellspacing="0" cellpadding="8" align="center ">
+
+			<thead>
+				<tr>
+					<th><input type="checkbox" id="jb" /></th>
+					<th>排名</th>
+					<th>关键词</th>
+					<th>趋势 </th>
+					<th>今日搜索</th>
+					<th>最近七日</th>
+					<th>相关链接</th>
+				</tr>
+			</thead>
+			<tbody id="ja">
+
+
+				<tr>
+					<th><input type="checkbox" /></th>
+					<td>1</td>
+					<td>鬼吹灯</td>
+					<td>上升</td>
+					<td>345</td>
+					<td>123</td>
+					<td> <a href="M2.html" target="_blank">贴吧</a> <a href="b.html" target="_blank">图片</a> <a
+							href="流量查询表.html target=" _blank"">百科</a></td>
+				</tr>
+				<tr>
+					<th><input type="checkbox" /></th>
+					<td>1</td>
+					<td>鬼吹灯</td>
+					<td>上升</td>
+					<td>345</td>
+					<td>123</td>
+					<td> <a href="#"></a>贴吧&nbsp;图片&nbsp;百科</td>
+				</tr>
+				<tr>
+					<th><input type="checkbox" /></th>
+					<td>1</td>
+					<td>鬼吹灯</td>
+					<td>上升</td>
+					<td>345</td>
+					<td>123</td>
+					<td> <a href="#"></a>贴吧&nbsp;图片&nbsp;百科</td>
+				</tr>
+				<tr>
+					<th><input type="checkbox" /></th>
+					<td>1</td>
+					<td>鬼吹灯</td>
+					<td>上升</td>
+					<td>345</td>
+					<td>123</td>
+					<td> <a href="#"></a>贴吧&nbsp;图片&nbsp;百科</td>
+				</tr>
+				<tr>
+					<th><input type="checkbox" /></th>
+					<td>1</td>
+					<td>鬼吹灯</td>
+					<td>上升</td>
+					<td>345</td>
+					<td>123</td>
+					<td> <a href="#"></a>贴吧&nbsp;图片&nbsp;百科</td>
+				</tr>
+
+				<tr>
+					<th><input type="checkbox" /></th>
+					<td>1</td>
+					<td>鬼吹灯</td>
+					<td>上升</td>
+					<td>345</td>
+					<td>123</td>
+					<td> <a href="#"></a>贴吧&nbsp;图片&nbsp;百科</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+	<script type="text/javascript">
+		var  trs=document.querySelectorAll('#ja tr');
+		var   ths=document.querySelectorAll('#ja th input');
+		var       all=document.querySelector('#jb');
+		for(var i=0;i<trs.length;i++){
+			trs[i].onmouseover=function(){
+				this.className='bg';
+			}
+			trs[i].onmouseout=function(){
+				this.className='wi';
+			}
+		
+		}
+		all.onclick=function(){
+			for(var i=0;i<ths.length;i++){
+				if(all.checked==false){
+					ths[i].checked=false;
+				}else{
+						ths[i].checked=true;
+				}
+			}
+		}
+		for(var i=0;i<ths.length;i++){
+			ths[i].onclick=function(){
+				if(!ths[i].checked){
+					all.checked=false;
+				}else{
+					all.checked=true;
+				}
+			}
+		}
+	</script>
+</html>

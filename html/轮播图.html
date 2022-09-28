@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="/rclx_01/js/animate.js"></script>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .all {
+        width: 725px;
+        position: relative;
+        overflow: hidden;
+        height: 600px;
+        margin: 0 auto;
+    }
+    
+    ul {
+        list-style: none;
+        width: 4000px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    ul li {
+        display: inline-block;
+    }
+    
+    .small {
+        position: absolute;
+        top: 220px;
+        background-color: black;
+        color: white;
+        opacity: 0.7;
+        width: 30px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        display: none;
+        z-index: 2;
+    }
+    
+    .big {
+        position: absolute;
+        top: 220px;
+        left: 690px;
+        background-color: black;
+        opacity: 0.7;
+        color: white;
+        width: 30px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        display: none;
+        z-index: 2;
+    }
+    
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    ol {
+        position: absolute;
+        top: 420px;
+        left: 280px;
+    }
+    
+    .all ol li {
+        width: 15px;
+        height: 15px;
+        /* background-color: white; */
+        border-radius: 50%;
+        display: inline-block;
+        border: 2px solid white;
+    }
+    
+    .current {
+        background-color: white;
+    }
+</style>
+
+<body>
+    <div class="all">
+        <ul>
+            <li><img src="/rclx_01/img/图片/focus1.png"></li>
+            <li><img src="/rclx_01/img/图片/focus1.jpg"></li>
+            <li><img src="/rclx_01/img/图片/focus2.jpg"></li>
+            <li><img src="/rclx_01/img/图片/focus3.jpg"></li>
+
+        </ul>
+        <ol>
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+
+
+        </ol>
+        <div class="small"><a href="javascript:;">&lt;</a></div>
+        <div class="big"><a href="javascript:;">&gt;</a></div>
+    </div>
+</body>
+<script>
+    var ul = document.querySelector('ul');
+    var lis = document.querySelector('ul').querySelectorAll('li')
+    var small = document.querySelector('.small')
+    var big = document.querySelector('.big')
+    var all = document.querySelector('.all')
+    var width = all.offsetWidth;
+
+    all.addEventListener('mouseover', function() {
+        small.style.display = 'block'
+        big.style.display = 'block'
+        clearInterval(timer)
+        timer = null;
+    })
+    all.addEventListener('mouseout', function() {
+        small.style.display = 'none'
+        big.style.display = 'none'
+        timer = setInterval(function() {
+            big.click();
+        }, 2000)
+
+    })
+    var ol = document.querySelector('ol');
+    var circle = ol.querySelectorAll('li')
+    for (var i = 0; i < circle.length; i++) {
+
+
+        circle[i].setAttribute('index', i);
+        circle[i].onclick = function() {
+            for (var i = 0; i < circle.length; i++) {
+                circle[i].className = ''
+            }
+            this.className = 'current';
+            var index = this.getAttribute('index')
+            num = index;
+            ctn = index;
+            // console.log(index);
+            animate(ul, -index * width)
+
+        }
+
+    }
+    var num = 0;
+    var ctn = 0;
+    var first = ul.children[0].cloneNode(true);
+    ul.appendChild(first);
+    var flag = true;
+    big.addEventListener('click', function() {
+        if (flag) {
+            flag = false;
+            num++;
+            if (num == ul.children.length - 1) {
+                ul.style.left = 0;
+                num = 0;
+            }
+
+            animate(ul, -num * width, function() {
+                flag = true;
+            })
+            ctn++;
+            if (ctn == 4) {
+                ctn = 0;
+            }
+            change();
+
+        }
+
+    })
+    small.addEventListener('click', function() {
+        if (num == 0) {
+            num = ul.children.length - 1
+            ul.style.left = -num * width + 'px';
+
+        }
+        num--;
+
+        animate(ul, -num * width)
+        ctn--;
+        if (ctn < 0) {
+            ctn = ol.children.length - 1;
+        }
+        change();
+
+
+    })
+
+    function change() {
+        for (var i = 0; i < ol.children.length; i++) {
+            ol.children[i].className = '';
+        }
+        ol.children[ctn].className = 'current'
+    }
+    var timer = setInterval(function() {
+        big.click();
+    }, 2000)
+</script>
+
+</html>

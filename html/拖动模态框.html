@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .father {
+        width: 500px;
+        height: 200px;
+        border: 1px solid #ccc;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    
+    .son {
+        width: 500px;
+        height: 50px;
+        background-color: #ccc;
+        position: absolute;
+        font-size: 25px;
+        line-height: 50px;
+        text-align: center;
+        cursor: move;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+<body>
+    <div class="father">
+        <div class="son">拖动模态框</div>
+    </div>
+</body>
+<script>
+    var son = document.querySelector('.son');
+    var father = document.querySelector('.father')
+
+    son.addEventListener('mousedown', function(e) {
+        var x = e.pageX - son.offsetLeft;
+        var y = e.pageY - son.offsetTop;
+
+        // console.log(x);
+        document.addEventListener('mousemove', move);
+
+        function move(e) {
+            father.style.left = e.pageX - x + 'px';
+            father.style.top = e.pageY - y + 'px';
+        }
+        document.addEventListener('mouseup', function() {
+            document.removeEventListener('mousemove', move)
+
+        })
+
+
+
+    })
+</script>
+
+</html>

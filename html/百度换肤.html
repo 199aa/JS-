@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		ul li {
+			display: inline-block;
+
+		}
+
+		ul {
+			list-style: none;
+			margin:100px 250px auto;
+
+		}
+		body{
+			background: url(../img/图片/1.jpg) no-repeat;
+		}
+	</style>
+	<body>
+		<ul>
+			<li><img src="../img/图片/1.jpg" width="250" height="150px"></li>
+			<li><img src="../img/图片/2.jpg" width="250" height="150px"></li>
+			<li><img src="../img/图片/3.jpg" width="250" height="150px"></li>
+			<li><img src="../img/图片/4.jpg" width="250" height="150px"></li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var body=document.body;
+		var img=document.querySelectorAll('ul li img');
+		for(var i=0;i<img.length;i++){
+			img[i].onclick=function(){
+				body.style.backgroundImage='url(' +this.src+ ')';
+			}
+			
+		}
+	</script>
+</html>

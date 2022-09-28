@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: rgb(247, 247, 247);
+    }
+    
+    div {
+        width: 650px;
+        height: 48px;
+        margin: 100px 400px;
+    }
+    
+    input {
+        width: 650px;
+        height: 48px;
+        font-size: 16px;
+        color: grey;
+        border: 1px solid white;
+        line-height: 48px;
+        padding-left: 25px;
+        border: none;
+        outline: none;
+    }
+    
+    button {
+        margin-left: 670px;
+        width: 70px;
+        height: 48px;
+        background-color: rgb(69, 98, 219);
+        color: white;
+        display: block;
+        margin-top: -50px;
+        line-height: 48px;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    a {
+        text-decoration: none;
+        width: 120px;
+        height: 80px;
+    }
+    
+    p {
+        width: 92px;
+        height: 16px;
+        color: #333;
+        font-family: 微软雅黑;
+        font-size: 12px;
+        margin-left: 15px;
+        margin-top: -55px;
+    }
+    
+    .section ul {
+        list-style: none;
+        width: 1500px;
+        height: 80px;
+        margin-left: -150px;
+        /* display: inline-block; */
+        margin-top: -130px;
+    }
+    
+    .section ul li {
+        width: 120px;
+        height: 80px;
+        display: inline-block;
+        text-align: center;
+        line-height: 80px;
+        position: relative;
+    }
+    
+    .section ul li:nth-of-type(8) {
+        font-size: 30px;
+        line-height: 80px;
+        text-align: center;
+        font-family: 华文楷体;
+    }
+    
+    .shadow {
+        box-shadow: 1px 1px 1px gray;
+    }
+    
+    .background {
+        background-color: rgb(232, 232, 232);
+    }
+    
+    .section ul li a span {
+        position: absolute;
+        top: -35px;
+        left: 95px;
+        display: none;
+    }
+    
+    .xiao i {
+        font-size: 20px;
+        color: #666;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-left: 860px;
+        cursor: pointer;
+        display: block;
+        text-align: center;
+        line-height: 30px;
+    }
+    
+    .rotates {
+        transform: rotate(-180deg);
+    }
+    
+    .white {
+        background-color: rgb(247, 247, 247);
+    }
+</style>
+
+<body>
+    <div>
+        <input type="text" name="" id="" placeholder="请输入你想要输入的内容">
+        <a href="javascript:;"><button>搜搜</button></a>
+    </div>
+    <div class="xiao">
+        <i>^</i>
+    </div>
+    <div class="section">
+        <ul>
+            <li>
+                <a href="https://www.bilibili.com/"><img src="/JavaScript案例练习/img/图片/yy1.png" width="24px" height="24px" alt="">
+                    <p>哔哩哔哩</p>
+                    <span>...</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.baidu.com/"><img src="/JavaScript案例练习/img/图片/yy2.png" width="24px" height="24px" alt="">
+                    <p>百度</p>
+                    <span>...</span>
+
+                </a>
+            </li>
+            <li>
+                <a href="#"><img src="/JavaScript案例练习/img/图片/yy3.png" width="24px" height="24px" alt="">
+                    <p>百度</p>
+                    <span>...</span>
+
+                </a>
+            </li>
+            <li>
+                <a href="#"><img src="/JavaScript案例练习/img/图片/yy4.png" width="24px" height="24px" alt="">
+                    <p>百度</p>
+                    <span>...</span>
+
+                </a>
+            </li>
+            <li>
+                <a href="#"><img src="/JavaScript案例练习/img/图片/yy5.png" width="24px" height="24px" alt="">
+                    <p>百度</p>
+                    <span>...</span>
+
+                </a>
+            </li>
+            <li>
+                <a href="#"><img src="/JavaScript案例练习/img/图片/yy6.png" width="24px" height="24px" alt="">
+                    <p>百度</p>
+                    <span>...</span>
+
+                </a>
+            </li>
+            <li>
+                <a href="#"><img src="/JavaScript案例练习/img/图片/yy7.png" width="24px" height="24px" alt="">
+                    <p>百度</p>
+                    <span>...</span>
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+
+                    <i>+</i>
+
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</body>
+<script>
+    var input = document.querySelector('input');
+
+    input.onmouseenter = function() {
+        input.className = 'shadow'
+    }
+    input.onmouseleave = function() {
+        input.className = ''
+    }
+    var lis = document.querySelectorAll('ul li');
+
+    var span = document.querySelector('ul span')
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].onmouseenter = function() {
+            this.className = 'background';
+            span.style.display = 'block';
+        }
+        lis[i].onmouseleave = function() {
+            this.className = '';
+            span.style.display = 'none';
+
+        }
+    }
+    var xiao = document.querySelector('.xiao i');
+    var ul = document.querySelector('ul');
+    var flag = false;
+    xiao.addEventListener('click', function() {
+        if (flag == false) {
+
+            ul.style.display = 'block';
+            xiao.className = '';
+            flag = true;
+        } else {
+            ul.style.display = 'none';
+            xiao.className = 'rotates';
+
+            flag = false;
+        }
+
+    })
+    xiao.onmouseenter = function() {
+        xiao.className = 'background';
+
+    }
+    xiao.onmouseleave = function() {
+        xiao.className = '';
+
+
+
+    }
+</script>
+
+</html>

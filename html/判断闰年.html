@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var year = prompt('请输入年份');
+
+		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+			alert('是闰年');
+		} else {
+			alert('不是闰年');
+		}
+		var month = prompt('请输入月份');
+		switch (month) {
+			case '4':
+			case '6':
+			case '9':
+			case '11':
+
+				alert("这一月有30天");
+				break;
+			case '2':
+				if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+					alert('这一月有29天');
+				} else {
+					alert('这一月有28天');
+				}
+				break;
+			default:
+				alert('这一月有31天');
+				break;
+
+		}
+	</script>
+</html>
